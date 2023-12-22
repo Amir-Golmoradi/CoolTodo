@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class Widgets {
@@ -35,23 +37,13 @@ class BStatusStyle {
   );
 }
 
-Widget calendar(String text, TextStyle? style) =>
-    Text(text, style: calendarStyle);
-
-final calendarStyle = TextStyle(
-  color: Colors.white,
-  fontSize: 16.sp,
-  fontWeight: FontWeight.w500,
-);
-
-class CalendarItem {
- static final List<Widget> weekend = [
-    calendar("Mon", calendarStyle),
-    calendar("Tue", calendarStyle),
-    calendar("Wed", calendarStyle),
-    calendar("Thu", calendarStyle),
-    calendar("Fri", calendarStyle),
-    calendar("Sat", calendarStyle),
-    calendar("Sun", calendarStyle),
-  ];
-}
+const List<GButton> tabItems = [
+  GButton(
+    icon: LineIcons.tasks,
+    text: 'Tasks',
+  ),
+  GButton(
+    icon: LineIcons.bookmark,
+    text: 'Boards',
+  ),
+];
