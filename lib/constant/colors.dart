@@ -6,7 +6,8 @@ class LightMode {
   static const snowyWhite = Color(0xFFFAFAFA);
   static const gbWhite = Color(0xFFe9e9e9);
   static const aliceBlue = Color(0xFFF0F8FF);
-  static const navbarLight = Color.fromARGB(255, 245, 243, 243);
+  static const navbarLight = Color(0xFFF5F3F3);
+  static const rosyBrown = Color(0xFFF5F3F3);
 }
 
 class DarkMode {

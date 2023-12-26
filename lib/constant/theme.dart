@@ -1,55 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/constant/colors.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
-/// Define the light theme properties
-ThemeData lightTheme = ThemeData(
-  /// AppBar theme configuration
-  appBarTheme: const AppBarTheme(
-    backgroundColor: Color.fromARGB(255, 245, 243, 243), // RosyBrown
-    elevation: 0,
+ThemeData lightMode = ThemeData(
+  //! AppBar theme configuration
+  appBarTheme: AppBarTheme(
+    centerTitle: true,
+    backgroundColor: LightMode.rosyBrown,
+    titleTextStyle: TextStyle(
+        fontSize: 18.sp, fontWeight: FontWeight.w700, color: DarkMode.scLight),
   ),
 
   /// Brightness level
   brightness: Brightness.light,
 
-  /// Color scheme for light mode
+  // Color scheme for light mode
   colorScheme: const ColorScheme.light(
-    background: LightMode.aliceBlue, // Alice Blue
+    background: LightMode.aliceBlue,
+    primary: Color(0xFF101c2e),
+    onPrimary: Color(0xFF242131),
+    secondary: Color(0xFF4b4f5f),
   ),
 
-  /// Floating action button theme for light mode
+  cardTheme: const CardTheme(
+    color: Colors.orange,
+  ),
+
+  // Floating action button theme for light mode
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: DarkMode.rasinBlack, // Raisin Black
+    backgroundColor: DarkMode.rasinBlack,
   ),
 
-// Bottom Navigation bar theme for light mode
+//  Bottom Navigation bar theme for light mode
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    backgroundColor: LightMode.navbarLight,
-  ),
+      backgroundColor: LightMode.navbarLight),
 );
 
-/// Define the dark theme properties
-ThemeData darkTheme = ThemeData(
+ThemeData darkMode = ThemeData(
   /// Brightness level
   brightness: Brightness.dark,
 
-  /// AppBar theme configuration for dark mode
-  appBarTheme: const AppBarTheme(
-    backgroundColor: DarkMode.rasinBlack, // Raisin Black
+  appBarTheme: AppBarTheme(
     elevation: 0,
+    centerTitle: true,
+    titleTextStyle: TextStyle(
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w700,
+        color: LightMode.snowyWhite),
+    backgroundColor: DarkMode.rasinBlack,
+  ),
+  cardTheme: const CardTheme(
+    color: LightMode.snowyWhite,
   ),
 
-  /// Color scheme for dark mode
   colorScheme: const ColorScheme.dark(
-    background: DarkMode.darkBlack, // Snowy White
+    background: DarkMode.darkBlack,
+    primary: Color(0xFF7F74A1),
+    onPrimary: Color(0xFF7F75A9),
+    secondary: Color(0xFF5A5F72),
   ),
 
-  /// Floating action button theme for dark mode
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: LightMode.snowyWhite, // Raisin Black
   ),
 
-  /// Bottom Navigation bar theme for dark mode
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: DarkMode.navbarDark,
   ),
