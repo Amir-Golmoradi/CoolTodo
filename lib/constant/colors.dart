@@ -1,20 +1,15 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-// gbWhite -> Gains-Boro-White
 class LightMode {
   LightMode._();
   static const snowyWhite = Color(0xFFFAFAFA);
-  static const gbWhite = Color(0xFFe9e9e9);
-  static const aliceBlue = Color(0xFFF0F8FF);
-  static const navbarLight = Color(0xFFF5F3F3);
-  static const rosyBrown = Color(0xFFF5F3F3);
 }
 
 class DarkMode {
   DarkMode._();
-  static const darkBlack = Color(0xFF2C283B);
-  static const rasinBlack = Color(0xFF252332);
-  static const spaceCadet = Color(0xFF2D293D);
-  static const scLight = Color(0xFF363149);
-  static const navbarDark = Color(0xFF242131);
+  static const erieBlack = Color(0xFF202021);
+  static const jet = Color(0xFF2f2f2e);
+  static const darkJet = Color(0xFF292928);
+  static const taskColor = Color(0xFF646468);
+  static const removeColor = Color(0xFFFD5F5F);
 }

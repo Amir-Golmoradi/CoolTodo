@@ -1,37 +1,35 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_todo/constant/theme.dart';
-import 'package:flutter_todo/pages/bottom_nav.dart';
-import 'package:flutter_todo/states/cubits/navbar-cubit/bottom_nav_cubit.dart';
-import 'package:get/route_manager.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:flutter_todo/constant/theme.dart";
+import "package:flutter_todo/data/bloc/todo_bloc.dart";
+import "package:flutter_todo/screen/homepage.dart";
+import "package:get/get.dart";
+import "package:hydrated_bloc/hydrated_bloc.dart";
+import "package:path_provider/path_provider.dart";
+import "package:responsive_sizer/responsive_sizer.dart";
 
 void main() async {
-  await Hive.initFlutter();
-  await Hive.openBox('todo-box');
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+      storageDirectory: kIsWeb
+          ? HydratedStorage.webStorageDirectory
+          : await getTemporaryDirectory());
 
-  runApp(const App());
-}
-
-class App extends StatelessWidget {
-  const App({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ResponsiveSizer(
-      builder: (context, orientation, screenType) => MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => BottomNavCubit()),
-        ],
-        child: GetMaterialApp(
-          theme: lightMode,
-          darkTheme: darkMode,
-          themeMode: ThemeMode.light,
-          home: const BottomNav(),
-          debugShowCheckedModeBanner: false,
+  runApp(
+    ResponsiveSizer(
+      builder: (context, orientation, screenType) =>
+          GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: lightMode,
+        darkTheme: darkMode,
+        themeMode: ThemeMode.system,
+        home: BlocProvider<TodoBloc>(
+          create: (context) =>
+              TodoBloc()..add(TodoStarted()),
+          child: const HomePage(),
         ),
       ),
-    );
-  }
+    ),
+  );
 }

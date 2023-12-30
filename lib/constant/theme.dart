@@ -1,70 +1,41 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_todo/constant/colors.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import "package:flutter/material.dart";
+import "package:flutter_todo/constant/colors.dart";
 
 ThemeData lightMode = ThemeData(
-  //! AppBar theme configuration
-  appBarTheme: AppBarTheme(
-    centerTitle: true,
-    backgroundColor: LightMode.rosyBrown,
-    titleTextStyle: TextStyle(
-        fontSize: 18.sp, fontWeight: FontWeight.w700, color: DarkMode.scLight),
-  ),
-
-  /// Brightness level
   brightness: Brightness.light,
-
-  // Color scheme for light mode
-  colorScheme: const ColorScheme.light(
-    background: LightMode.aliceBlue,
-    primary: Color(0xFF101c2e),
-    onPrimary: Color(0xFF242131),
-    secondary: Color(0xFF4b4f5f),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+    iconTheme: IconThemeData(color: Colors.black),
   ),
-
-  cardTheme: const CardTheme(
-    color: Colors.orange,
+  colorScheme: ColorScheme.light(
+    background: Colors.grey[400]!, // backGroundColor
+    primary: Colors.grey[400]!, // Notes Card 
+    onPrimary: DarkMode.darkJet, // On Notes Card
+    secondary: Colors.grey[400]!, // Action Button
+    onSecondary: DarkMode.darkJet,
+    surface: DarkMode.removeColor,
   ),
-
-  // Floating action button theme for light mode
-  floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: DarkMode.rasinBlack,
-  ),
-
-//  Bottom Navigation bar theme for light mode
-  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: LightMode.navbarLight),
 );
 
 ThemeData darkMode = ThemeData(
-  /// Brightness level
   brightness: Brightness.dark,
-
   appBarTheme: AppBarTheme(
+    backgroundColor: Colors.transparent,
     elevation: 0,
-    centerTitle: true,
-    titleTextStyle: TextStyle(
-        fontSize: 18.sp,
-        fontWeight: FontWeight.w700,
-        color: LightMode.snowyWhite),
-    backgroundColor: DarkMode.rasinBlack,
+    iconTheme: IconThemeData(color: Colors.grey[200]!),
   ),
-  cardTheme: const CardTheme(
-    color: LightMode.snowyWhite,
+  checkboxTheme: const CheckboxThemeData(
+    fillColor: MaterialStatePropertyAll(Color(0xFFC4C4C5)),
+    checkColor: MaterialStatePropertyAll(DarkMode.erieBlack),
   ),
-
-  colorScheme: const ColorScheme.dark(
-    background: DarkMode.darkBlack,
-    primary: Color(0xFF7F74A1),
-    onPrimary: Color(0xFF7F75A9),
-    secondary: Color(0xFF5A5F72),
-  ),
-
-  floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: LightMode.snowyWhite, // Raisin Black
-  ),
-
-  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    backgroundColor: DarkMode.navbarDark,
+  colorScheme: ColorScheme.dark(
+    background: DarkMode.erieBlack,
+    onBackground: Colors.grey[500]!,
+    primary: Colors.grey[900]!, // Task Cards
+    onPrimary: Colors.grey[300]!, // On Task Cards
+    secondary: const Color(0xFF2B2B2B), // Floating Button
+    onSecondary: DarkMode.darkJet,
+    surface: DarkMode.removeColor,
   ),
 );
